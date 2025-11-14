@@ -1,7 +1,8 @@
 <resources>
+    <string name="back_button">Voltar</string>
     <string name="app_name">Pokédex</string>
     <string name="splash_image_description">Logo bola Pokédex</string>
-    <string name="search_hint">Digite o nome do Pokémon</string>
+    <string name="search_hint">Procure aqui seu Pokémon!</string>
     <string name="pokemon_image_description">Imagem do Pokémon</string>
     <string name="pokemon_details_id">ID: %1$d</string>
     <string name="pokemon_details_type">Tipo: %1$s</string>
@@ -9,8 +10,8 @@
     <string name="pokemon_weight">Peso: %1$.1f kg</string>
     <string name="pokemon_stats_title">Stats</string>
     <string name="pokemon_hp">HP</string>
-    <string name="pokemon_attack">Attack</string>
-    <string name="pokemon_defense">Defense</string>
+    <string name="pokemon_attack">Dano</string>
+    <string name="pokemon_defense">Armadura</string>
     <string name="pokemon_special_attack">Sp. Atk</string>
     <string name="pokemon_special_defense">Sp. Def</string>
     <string name="pokemon_speed">Speed</string>

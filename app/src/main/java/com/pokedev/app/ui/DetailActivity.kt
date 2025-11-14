@@ -57,5 +57,10 @@ class DetailActivity : AppCompatActivity() {
                 Toast.makeText(this, it, Toast.LENGTH_LONG).show()
             }
         }
+
+        // Botão Voltar
+        binding.btnBack.setOnClickListener {
+            finish() // Volta para a MainActivity
+        }
     }
 }
