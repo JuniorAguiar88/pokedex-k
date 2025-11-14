@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="Base.Theme.Pokedex" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize the light theme here if needed -->
+    </style>
+
+    <style name="Theme.Pokedex" parent="Base.Theme.Pokedex" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background_white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_splash</item>
+        <item name="windowSplashScreenAnimationDuration">4000</item>
+        <item name="postSplashScreenTheme">@style/Theme.Pokedex</item>
+    </style>
+</resources>
+
+
+
+

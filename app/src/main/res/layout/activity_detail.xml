@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.pokedev.app.presentation.DetailViewModel" />
+        <variable
+            name="pokemonDetail"
+            type="com.pokedev.app.domain.PokemonDetailResponse" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        tools:context="com.pokedev.app.ui.DetailActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
+
+                <!-- Imagem do Pokemon -->
+                <ImageView
+                    android:id="@+id/pokemon_image"
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:contentDescription="@string/pokemon_image_description"
+                    android:src="@drawable/placeholder_image"
+                    android:layout_marginTop="16dp"
+                    app:imageUrl="@{pokemonDetail.sprites.frontDefault}" />
+
+                <!-- Nome do Pokemon -->
+                <TextView
+                    android:id="@+id/pokemon_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="32sp"
+                    android:textStyle="bold"
+                    android:textAllCaps="true"
+                    android:layout_marginTop="16dp"
+                    android:text="@{pokemonDetail.name}"
+                    tools:text="Bulbasaur" />
+
+                <!-- ID do Pokemon -->
+                <TextView
+                    android:id="@+id/pokemon_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:layout_marginTop="4dp"
+                    android:text='@{pokemonDetail != null ? @string/pokemon_details_id(pokemonDetail.id) : ""}'
+                    tools:text="ID: 1" />
+
+                <!-- Seção de Tipos -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pokemon_type_title"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="24dp" />
+
+                <TextView
+                    android:id="@+id/pokemon_types"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginTop="8dp"
+                    app:pokemonTypes="@{pokemonDetail}"
+                    tools:text="Grass, Poison" />
+
+                <!-- Altura e Peso -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="24dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Altura"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/pokemon_height"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_marginTop="4dp"
+                            app:pokemonHeight="@{pokemonDetail.height}"
+                            tools:text="0.7 m" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Peso"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/pokemon_weight"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:layout_marginTop="4dp"
+                            app:pokemonWeight="@{pokemonDetail.weight}"
+                            tools:text="6.9 kg" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Seção de Stats -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/pokemon_stats_title"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="24dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="12dp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <!-- HP -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pokemon_hp"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/stat_hp_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:tag="hp"
+                            app:pokemonStat="@{pokemonDetail}"
+                            tools:text="45" />
+                    </LinearLayout>
+
+                    <!-- Attack -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pokemon_attack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/stat_attack_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:tag="attack"
+                            app:pokemonStat="@{pokemonDetail}"
+                            tools:text="49" />
+                    </LinearLayout>
+
+                    <!-- Defense -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pokemon_defense"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/stat_defense_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:tag="defense"
+                            app:pokemonStat="@{pokemonDetail}"
+                            tools:text="49" />
+                    </LinearLayout>
+
+                    <!-- Special Attack -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pokemon_special_attack"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/stat_special_attack_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:tag="special-attack"
+                            app:pokemonStat="@{pokemonDetail}"
+                            tools:text="65" />
+                    </LinearLayout>
+
+                    <!-- Special Defense -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pokemon_special_defense"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/stat_special_defense_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:tag="special-defense"
+                            app:pokemonStat="@{pokemonDetail}"
+                            tools:text="65" />
+                    </LinearLayout>
+
+                    <!-- Speed -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="32dp">
+
+                        <TextView
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/pokemon_speed"
+                            android:textSize="16sp" />
+
+                        <TextView
+                            android:id="@+id/stat_speed_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:tag="speed"
+                            app:pokemonStat="@{pokemonDetail}"
+                            tools:text="45" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+        <!-- Progress Bar -->
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

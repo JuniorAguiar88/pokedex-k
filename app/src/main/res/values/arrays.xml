@@ -1,0 +1,15 @@
+<resources>
+    <string-array name="type_filter_options">
+        <item>@string/filter_type_all</item>
+        <item>Fire</item>
+        <item>Water</item>
+        <item>Grass</item>
+    </string-array>
+
+    <string-array name="generation_filter_options">
+        <item>@string/filter_generation_all</item>
+        <item>@string/filter_generation_gen_i</item>
+        <item>@string/filter_generation_gen_ii</item>
+    </string-array>
+</resources>
+
