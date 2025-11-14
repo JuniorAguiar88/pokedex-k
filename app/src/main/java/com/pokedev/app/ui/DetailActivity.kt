@@ -25,13 +25,16 @@ class DetailActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this)[DetailViewModel::class.java]
         binding.viewModel = viewModel
 
-        // Recupera Pokemon passado pela Intent
+        // ✅ Declare 'pokemon' aqui (fora do if)
         val pokemon: Pokemon? = if (Build.VERSION.SDK_INT >= 33) {
             intent.getParcelableExtra("pokemon", Pokemon::class.java)
         } else {
             @Suppress("DEPRECATION")
             intent.getParcelableExtra("pokemon")
         }
+
+        // ✅ Agora 'pokemon' está visível aqui
+        pokemon?.let { binding.pokemon = it }
 
         // Buscar dados detalhados da API
         pokemon?.let {

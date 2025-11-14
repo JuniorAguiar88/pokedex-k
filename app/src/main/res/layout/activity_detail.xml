@@ -10,12 +10,16 @@
         <variable
             name="pokemonDetail"
             type="com.pokedev.app.domain.PokemonDetailResponse" />
+        <variable
+            name="pokemon"
+            type="com.pokedev.app.domain.Pokemon" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp"
+        app:backgroundColorFromPokemon="@{pokemon}"
         tools:context="com.pokedev.app.ui.DetailActivity">
 
         <!--Botão Voltar-->
