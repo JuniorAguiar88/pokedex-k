@@ -83,7 +83,7 @@ fun setPokemonListTypes(view: TextView, pokemon: Pokemon?) {
 
 @BindingAdapter("backgroundColorFromPokemon")
 fun View.setBackgroundColorFromPokemon(pokemon: Pokemon?) {
-    // ✅ Primeiro: verifica se é nulo ou vazio → fundo neutro
+   
     if (pokemon == null || pokemon.categories.isEmpty()) {
         setBackgroundColor(ContextCompat.getColor(context, android.R.color.background_light))
         return
